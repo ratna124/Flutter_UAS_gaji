@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signin.dart';
-import 'package:projek_gaji/first_screen.dart';
 import 'package:projek_gaji/email_screen.dart';
+import 'package:projek_gaji/home.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -25,14 +25,24 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.blue[100], Colors.blueGrey[100]],
+          ),
+        ),
         child: Center(
           child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlutterLogo(size: 150),
-                SizedBox(height: 50),
+                Image.network(
+                'https://www.freepnglogos.com/uploads/dollar-sign-png/dollar-sign-transparent-money-cliparts-download-clip-art-17.png',
+                height: 200,
+                width: 200,
+                ),
+                SizedBox(height: 40),
                 Padding(
                   padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
                   child: TextField(
@@ -117,7 +127,12 @@ class _LoginPageState extends State<LoginPage> {
                                   }
                                 },
                               );
-                            })),
+                            }
+                          )
+                        ),
+                      Container(
+                      width: 9.0,
+                    ),
                     Expanded(
                         child: RaisedButton(
                             color: Theme.of(context).primaryColorDark,
@@ -147,10 +162,38 @@ class _LoginPageState extends State<LoginPage> {
                             }))
                   ]),
                 ),
-                Text('OR'),
+                SizedBox(height: 30),
+                Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: Text(
+                      "OR",
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      thickness: 1,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
                 SizedBox(height: 30),
                 _signInButton(),
-              ]),
+              ]
+          ),
         ),
       ),
     );
@@ -165,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FirstScreen();
+                  return Home();
                 },
               ),
             );
