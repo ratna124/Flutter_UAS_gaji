@@ -17,7 +17,15 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
         appBar: AppBar(
           leading: Icon(Icons.keyboard_arrow_left),
         ),
-        body: Padding(
+        body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.blue[100], Colors.blueGrey[100]],
+          ),
+        ),
+        child : Padding(
           padding: EdgeInsets.only(top: 15.0, left: 10.0, right: 10.0),
           child: ListView(
             children: <Widget>[
@@ -104,6 +112,7 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
             ],
           ),
         )
+        ),
       );
   }
 }

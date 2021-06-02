@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'homeKaryawan.dart';
 import 'homeKategori.dart';
 
+
 class Home extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -10,7 +11,7 @@ class Home extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
        
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: Colors.lightBlue,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
@@ -18,7 +19,7 @@ class Home extends StatelessWidget {
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(  
+          appBar: AppBar(
             title: Text("Penggajian Karyawan"),
             centerTitle: true,
             bottom: TabBar(
@@ -32,7 +33,8 @@ class Home extends StatelessWidget {
               ],
             ),
           ),
-              body: TabBarView(
+              body: 
+              TabBarView(
                 children: [
                   HomeKaryawan(),
                   HomeKategori(),
