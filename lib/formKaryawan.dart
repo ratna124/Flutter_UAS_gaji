@@ -104,6 +104,7 @@ class EntryFormKaryawanState extends State<EntryFormKaryawan> {
                                 "noHp": double.tryParse(noHpController.text),
                               });
                               clearInputText();
+                              Navigator.pop(context);
                             },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),

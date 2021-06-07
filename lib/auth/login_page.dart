@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'signin.dart';
-import 'package:projek_gaji/email_screen.dart';
 import 'package:projek_gaji/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -120,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return EmailScreen();
+                                          return Home();
                                         },
                                       ),
                                     );
@@ -152,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return EmailScreen();
+                                          return Home();
                                         },
                                       ),
                                     );

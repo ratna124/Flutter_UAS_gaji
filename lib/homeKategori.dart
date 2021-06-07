@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'formKategori.dart';
-import 'auth/signin.dart';
-import 'auth/login_page.dart';
 import 'database/itemKategori.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -86,32 +84,6 @@ class HomeState extends State<HomeKategori> {
                         );
                       }),
                 ),
-                Container(
-                  width: 9.0,
-                ),
-                Expanded(
-                  child: RaisedButton(
-                    onPressed: () {
-                      signOutGoogle();
-
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) {
-                        return LoginPage();
-                      }), ModalRoute.withName('/'));
-                    },
-                    color: Colors.blue,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                       Icons.outbond,
-                       color: Colors.white,
-                     )
-                    ),
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40)),
-                  ),
-                )
               ]),
             ),
           ]),
