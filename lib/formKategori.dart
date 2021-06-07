@@ -18,8 +18,8 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
     golonganController.text = "";
     gajiController.text = "";
   }
+
   Widget build(BuildContext context) {
-    
     //kondisi
     //rubah
     return Scaffold(
@@ -40,32 +40,32 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
               children: <Widget>[
                 // Golongan
                 TextField(
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                              controller: golonganController,
-                              decoration: InputDecoration(
-                                  hintText: "Isi Golongan",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16)),
-                            ),
-                            TextField(
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                              controller: gajiController,
-                              decoration: InputDecoration(
-                                  hintText: "Isi Gaji",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16)),
-                              keyboardType: TextInputType.number,
-                            ),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
+                  controller: golonganController,
+                  decoration: InputDecoration(
+                      hintText: "Isi Golongan",
+                      hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16)),
+                ),
+                TextField(
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
+                  controller: gajiController,
+                  decoration: InputDecoration(
+                      hintText: "Isi Gaji",
+                      hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16)),
+                  keyboardType: TextInputType.number,
+                ),
 
                 // tombol button
                 Padding(
@@ -82,13 +82,13 @@ class EntryFormKategoriState extends State<EntryFormKategori> {
                             textScaleFactor: 1.5,
                           ),
                           onPressed: () async {
-                              // TODO 1 ADD DATA HERE
-                              await _kategori.add({
-                                "Golongan": golonganController.text,
-                                "Gaji": double.tryParse(gajiController.text),
-                              });
-                              clearInputText();
-                            },
+                            // TODO 1 ADD DATA HERE
+                            await _kategori.add({
+                              "Golongan": golonganController.text,
+                              "Gaji": double.tryParse(gajiController.text),
+                            });
+                            clearInputText();
+                          },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
                         ),

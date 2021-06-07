@@ -20,25 +20,24 @@ class Home extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text("Penggajian Karyawan",
-            style: TextStyle(color: Colors.white)
-            ),
+                style: TextStyle(color: Colors.white)),
             centerTitle: true,
             bottom: TabBar(
               tabs: [
                 Tab(
                   child: Center(
-                         child: Icon(
-                       Icons.person,
-                       color: Colors.white,
-                     )),
+                      child: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  )),
                 ),
                 Tab(
                   child: Center(
-                         child: Icon(
-                       Icons.category,
-                       color: Colors.white,
-                     )),
-                    ),
+                      child: Icon(
+                    Icons.category,
+                    color: Colors.white,
+                  )),
+                ),
               ],
             ),
           ),

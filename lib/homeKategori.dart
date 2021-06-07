@@ -15,15 +15,6 @@ class HomeState extends State<HomeKategori> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text(
-        //     name + " | " + email,
-        //     style: TextStyle(
-        //         fontSize: 20,
-        //         color: Colors.deepPurple,
-        //         fontWeight: FontWeight.bold),
-        //   ),
-        // ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(

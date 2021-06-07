@@ -20,8 +20,8 @@ class EntryFormKaryawanState extends State<EntryFormKaryawan> {
     alamatController.text = "";
     noHpController.text = "";
   }
+
   Widget build(BuildContext context) {
-    
     //kondisi
     //rubah
     return Scaffold(
@@ -42,45 +42,45 @@ class EntryFormKaryawanState extends State<EntryFormKaryawan> {
               children: <Widget>[
                 // Golongan
                 TextField(
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                              controller: namaController,
-                              decoration: InputDecoration(
-                                  hintText: "Nama",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16)),
-                            ),
-                            TextField(
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                              controller: alamatController,
-                              decoration: InputDecoration(
-                                  hintText: "Alamat",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16)),
-                            ),
-                            TextField(
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                              controller: noHpController,
-                              decoration: InputDecoration(
-                                  hintText: "No. HP",
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 16)),
-                              keyboardType: TextInputType.number,
-                            ),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
+                  controller: namaController,
+                  decoration: InputDecoration(
+                      hintText: "Nama",
+                      hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16)),
+                ),
+                TextField(
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
+                  controller: alamatController,
+                  decoration: InputDecoration(
+                      hintText: "Alamat",
+                      hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16)),
+                ),
+                TextField(
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16),
+                  controller: noHpController,
+                  decoration: InputDecoration(
+                      hintText: "No. HP",
+                      hintStyle: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16)),
+                  keyboardType: TextInputType.number,
+                ),
 
                 // tombol button
                 Padding(
@@ -97,15 +97,15 @@ class EntryFormKaryawanState extends State<EntryFormKaryawan> {
                             textScaleFactor: 1.5,
                           ),
                           onPressed: () async {
-                              // TODO 1 ADD DATA HERE
-                              await _karyawan.add({
-                                "Nama": namaController.text,
-                                "Alamat": alamatController.text,
-                                "noHp": double.tryParse(noHpController.text),
-                              });
-                              clearInputText();
-                              Navigator.pop(context);
-                            },
+                            // TODO 1 ADD DATA HERE
+                            await _karyawan.add({
+                              "Nama": namaController.text,
+                              "Alamat": alamatController.text,
+                              "noHp": double.tryParse(noHpController.text),
+                            });
+                            clearInputText();
+                            Navigator.pop(context);
+                          },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15)),
                         ),
