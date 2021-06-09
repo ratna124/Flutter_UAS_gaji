@@ -26,9 +26,9 @@ class HomeState extends State<HomeKaryawan> {
           
           child: ListView(
                 children: [
-                  StreamBuilder<QuerySnapshot>(
+                StreamBuilder<QuerySnapshot>(
                     stream:
-                        _karyawan.orderBy('Nama', descending: true).snapshots(),
+                    _karyawan.orderBy('Nama', descending: true).snapshots(),
                     builder: (buildContext, snapshot) {
                       return Column(
                         children: snapshot.data.docs

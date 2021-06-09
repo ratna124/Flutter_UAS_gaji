@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'homeKaryawan.dart';
 import 'homeKategori.dart';
 import 'auth/drawer.dart';
+import 'Kategori/HomeKat.dart';
 
 class Home extends StatelessWidget {
   // This widget is the root of your application.
@@ -45,7 +46,7 @@ class Home extends StatelessWidget {
           body: TabBarView(
             children: [
               HomeKaryawan(),
-              HomeKategori(),
+              HomeKat(),
             ],
           ),
         ),
