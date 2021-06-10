@@ -26,11 +26,11 @@ class Database {
 
   static Future<void> updateItem({
     String golongan,
-    String gaji,
+    double gaji,
     String docId,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid);
+        _mainCollection.doc(docId);
 
     Map<String, dynamic> data = <String, dynamic>{
       "golongan": golongan,
@@ -54,7 +54,7 @@ class Database {
     String docId,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid);
+        _mainCollection.doc(docId);
 
     await documentReferencer
         .delete()

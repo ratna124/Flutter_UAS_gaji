@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:projek_gaji/database/Kategori.dart';
-import 'EditItemKategori.dart';
+import 'package:projek_gaji/database/Karyawan.dart';
+import 'EditItemKaryawan.dart';
 
-class EditScreenKategori extends StatefulWidget {
-  final String currentGolongan;
-  final double currentGaji;
+class EditScreenKaryawan extends StatefulWidget {
+  final String currentNama;
+  final String currentAlamat;
+  final double currentnoHp;
   final String documentId;
 
-  EditScreenKategori({
-    this.currentGolongan,
-    this.currentGaji,
+  EditScreenKaryawan({
+    this.currentNama,
+    this.currentAlamat,
+    this.currentnoHp,
     this.documentId,
   });
 
   @override
-  _EditScreenKategoriState createState() => _EditScreenKategoriState();
+  _EditScreenKaryawanState createState() => _EditScreenKaryawanState();
 }
 
-class _EditScreenKategoriState extends State<EditScreenKategori> {
-  final FocusNode _golonganFocusNode = FocusNode();
-
-  final FocusNode _gajiFocusNode = FocusNode();
+class _EditScreenKaryawanState extends State<EditScreenKaryawan> {
+  final FocusNode _namaFocusNode = FocusNode();
+  final FocusNode _alamatFocusNode = FocusNode();
+  final FocusNode _noHpFocusNode = FocusNode();
 
   bool _isDeleting = false;
 
@@ -28,14 +30,15 @@ class _EditScreenKategoriState extends State<EditScreenKategori> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _golonganFocusNode.unfocus();
-        _gajiFocusNode.unfocus();
+        _namaFocusNode.unfocus();
+        _alamatFocusNode.unfocus();
+        _noHpFocusNode.unfocus();
       },
       child: Scaffold(
         // backgroundColor: CustomColors.firebaseNavy,
         appBar: AppBar(
-           elevation: 0,
-           title: Text("Edit Kategori"),
+          elevation: 0,
+          title: Text("Edit Karyawan"),
           // backgroundColor: CustomColors.firebaseNavy,
           // title: AppBarTitle(),
           actions: [
@@ -85,15 +88,17 @@ class _EditScreenKategoriState extends State<EditScreenKategori> {
               colors: [Colors.blue[100], Colors.blueGrey[100]],
             ),
           ),
-            child: EditItemForm(
+            child: EditItemKaryawan(
               documentId: widget.documentId,
-              golonganFocusNode: _golonganFocusNode,
-              gajiFocusNode: _gajiFocusNode,
-              currentGolongan: widget.currentGolongan,
-              currentGaji: widget.currentGaji,
+              namaFocusNode: _namaFocusNode,
+              alamatFocusNode: _alamatFocusNode,
+              noHpFocusNode: _noHpFocusNode,
+              currentNama: widget.currentNama,
+              currentAlamat: widget.currentAlamat,
+              currentnoHp: widget.currentnoHp,
             ),
           ),
         ),
-    );
+      );
   }
 }

@@ -1,42 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:projek_gaji/database/Kategori.dart';
-import 'CustomFormFieldKategori.dart';
+import 'package:projek_gaji/database/Karyawan.dart';
+import 'CustomFieldKaryawan.dart';
 
-class EditItemForm extends StatefulWidget {
-  final FocusNode golonganFocusNode;
-  final FocusNode gajiFocusNode;
-  final String currentGolongan;
-  final double currentGaji;
+class EditItemKaryawan extends StatefulWidget {
+  final FocusNode namaFocusNode;
+  final FocusNode alamatFocusNode;
+  final FocusNode noHpFocusNode;
+  final String currentNama;
+  final String currentAlamat;
+  final double currentnoHp;
   final String documentId;
 
-  const EditItemForm({
-    this.golonganFocusNode,
-    this.gajiFocusNode,
-    this.currentGolongan,
-    this.currentGaji,
+  const EditItemKaryawan({
+    this.namaFocusNode,
+    this.alamatFocusNode,
+    this.noHpFocusNode,
+    this.currentNama,
+    this.currentAlamat,
+    this.currentnoHp,
     this.documentId,
   });
 
   @override
-  _EditItemFormState createState() => _EditItemFormState();
+  _EditItemKaryawanState createState() => _EditItemKaryawanState();
 }
 
-class _EditItemFormState extends State<EditItemForm> {
+class _EditItemKaryawanState extends State<EditItemKaryawan> {
   final _editItemFormKey = GlobalKey<FormState>();
 
   bool _isProcessing = false;
 
-  TextEditingController _golonganController = TextEditingController();
-  TextEditingController _gajiController  = TextEditingController();
+  TextEditingController _namaController = TextEditingController();
+  TextEditingController _alamatController  = TextEditingController();
+  TextEditingController _noHpController  = TextEditingController();
 
   @override
   void initState() {
-    _golonganController = TextEditingController(
-      text: widget.currentGolongan,
+    _namaController = TextEditingController(
+      text: widget.currentNama,
     );
 
-    _gajiController = TextEditingController(
-      text: widget.currentGaji.toString(),
+    _alamatController = TextEditingController(
+      text: widget.currentAlamat,
+    );
+
+    _noHpController = TextEditingController(
+      text: widget.currentnoHp.toString(),
     );
     super.initState();
   }
@@ -59,29 +68,42 @@ class _EditItemFormState extends State<EditItemForm> {
                 SizedBox(height: 24.0),
                 CustomFormField(
                   isLabelEnabled: false,
-                  controller: _golonganController,
-                  focusNode: widget.golonganFocusNode,
+                  controller: _namaController,
+                  focusNode: widget.namaFocusNode,
                   keyboardType: TextInputType.text,
                   inputAction: TextInputAction.next,
                   // validator: (value) => Validator.validateField(
                   //   value: value,
                   // ),
-                  label: 'Golongan',
-                  hint: 'Golongan',
+                  label: 'Nama',
+                  hint: 'Nama',
+                ),
+                SizedBox(height: 24.0),
+                CustomFormField(
+                  isLabelEnabled: false,
+                  controller: _alamatController,
+                  focusNode: widget.alamatFocusNode,
+                  keyboardType: TextInputType.text,
+                  inputAction: TextInputAction.next,
+                  // validator: (value) => Validator.validateField(
+                  //   value: value,
+                  // ),
+                  label: 'Alamat',
+                  hint: 'Alamat',
                 ),
                 SizedBox(height: 24.0),
                 CustomFormField(
                   maxLines: 10,
                   isLabelEnabled: false,
-                  controller: _gajiController,
-                  focusNode: widget.gajiFocusNode,
+                  controller: _noHpController,
+                  focusNode: widget.noHpFocusNode,
                   keyboardType: TextInputType.number,
                   inputAction: TextInputAction.done,
                   // validator: (value) => Validator.validateField(
                   //   value: value,
                   // ),
-                  label: 'Gaji',
-                  hint: 'Gaji',
+                  label: 'No. HP',
+                  hint: 'No. HP',
                 ),
               ],
             ),
@@ -109,8 +131,9 @@ class _EditItemFormState extends State<EditItemForm> {
                       ),
                     ),
                     onPressed: () async {
-                      widget.golonganFocusNode.unfocus();
-                      widget.gajiFocusNode.unfocus();
+                      widget.namaFocusNode.unfocus();
+                      widget.alamatFocusNode.unfocus();
+                      widget.noHpFocusNode.unfocus();
 
                       if (_editItemFormKey.currentState.validate()) {
                         setState(() {
@@ -119,8 +142,9 @@ class _EditItemFormState extends State<EditItemForm> {
 
                         await Database.updateItem(
                           docId: widget.documentId,
-                          golongan: _golonganController.text,
-                          gaji: double.parse(_gajiController.text),
+                          nama: _namaController.text,
+                          alamat: _alamatController.text,
+                          noHp: double.parse(_noHpController.text),
                         );
 
                         setState(() {

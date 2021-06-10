@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projek_gaji/Karyawan/HomeKar.dart';
 import 'homeKaryawan.dart';
 import 'homeKategori.dart';
 import 'auth/drawer.dart';
@@ -45,7 +46,7 @@ class Home extends StatelessWidget {
           drawer: DrawerWidget(),
           body: TabBarView(
             children: [
-              HomeKaryawan(),
+              HomeKar(),
               HomeKat(),
             ],
           ),

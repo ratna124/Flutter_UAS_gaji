@@ -1,31 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:projek_gaji/database/Kategori.dart';
-import 'CustomFormFieldKategori.dart';
+import 'package:projek_gaji/database/Karyawan.dart';
+import 'CustomFieldKaryawan.dart';
 
-class AddKategori extends StatefulWidget {
-  final FocusNode golonganFocusNode;
-  final FocusNode gajiFocusNode;
+class AddKaryawan extends StatefulWidget {
+  final FocusNode namaFocusNode;
+  final FocusNode alamatFocusNode;
+  final FocusNode noHpFocusNode;
 
-  const AddKategori({
-    this.golonganFocusNode,
-    this.gajiFocusNode,
+  const AddKaryawan({
+    this.namaFocusNode,
+    this.alamatFocusNode,
+    this.noHpFocusNode,
   });
 
   @override
-  _AddKategoriState createState() => _AddKategoriState();
+  _AddKaryawanState createState() => _AddKaryawanState();
 }
 
-class _AddKategoriState extends State<AddKategori> {
+class _AddKaryawanState extends State<AddKaryawan> {
   final _addItemFormKey = GlobalKey<FormState>();
 
   bool _isProcessing = false;
 
-  final TextEditingController _golonganController = TextEditingController();
-  final TextEditingController _gajiController = TextEditingController();
+  final TextEditingController _namaController = TextEditingController();
+  final TextEditingController _alamatController = TextEditingController();
+  final TextEditingController _noHpController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Scaffold(
+      body: Form(
       key: _addItemFormKey,
       child: Column(
         children: [
@@ -41,23 +45,33 @@ class _AddKategoriState extends State<AddKategori> {
                 SizedBox(height: 25.0),
                 CustomFormField(
                   isLabelEnabled: false,
-                  controller: _golonganController,
-                  focusNode: widget.golonganFocusNode,
+                  controller: _namaController,
+                  focusNode: widget.namaFocusNode,
                   keyboardType: TextInputType.text,
                   inputAction: TextInputAction.next,
-                  label: 'Golongan',
-                  hint: 'Golongan',
+                  label: 'Nama',
+                  hint: 'Nama',
                 ),
                 SizedBox(height: 24.0),
                 CustomFormField(
-                  // maxLines: 10,
                   isLabelEnabled: false,
-                  controller: _gajiController,
-                  focusNode: widget.gajiFocusNode,
+                  maxLines: 3,
+                  controller: _alamatController,
+                  focusNode: widget.alamatFocusNode,
+                  keyboardType: TextInputType.text,
+                  inputAction: TextInputAction.next,
+                  label: 'Alamat',
+                  hint: 'Alamat',
+                ),
+                SizedBox(height: 24.0),
+                CustomFormField(
+                  isLabelEnabled: false,
+                  controller: _noHpController,
+                  focusNode: widget.noHpFocusNode,
                   keyboardType: TextInputType.number,
                   inputAction: TextInputAction.done,
-                  label: 'Gaji',
-                  hint: 'Gaji',
+                  label: 'No. HP',
+                  hint: 'No. HP',
                 ),
               ],
             ),
@@ -78,17 +92,19 @@ class _AddKategoriState extends State<AddKategori> {
                       ),
                     ),
                     onPressed: () async {
-                      widget.golonganFocusNode.unfocus();
-                      widget.gajiFocusNode.unfocus();
+                      // widget.namaFocusNode.unfocus();
+                      // widget.alamatFocusNode.unfocus();
+                      // widget.noHpFocusNode.unfocus();
 
                       if (_addItemFormKey.currentState.validate()) {
                         setState(() {
                           _isProcessing = true;
                         });
 
-                        await Database.addItem(
-                            golongan: _golonganController.text,
-                            gaji: double.tryParse(_gajiController.text));
+                        await Database.addItemKaryawan(
+                            nama: _namaController.text,
+                            alamat: _alamatController.text,
+                            noHp: double.tryParse(_noHpController.text));
 
                         setState(() {
                           _isProcessing = false;
@@ -102,7 +118,8 @@ class _AddKategoriState extends State<AddKategori> {
                       child: Text(
                         'Save',
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                           letterSpacing: 2,
                         ),
                       ),
@@ -111,6 +128,7 @@ class _AddKategoriState extends State<AddKategori> {
                 ),
         ],
       ),
+      )
     );
   }
 }

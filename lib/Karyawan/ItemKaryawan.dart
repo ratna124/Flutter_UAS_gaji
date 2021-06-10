@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:projek_gaji/database/Kategori.dart';
-import 'EditScreenKat.dart';
+import 'package:projek_gaji/database/Karyawan.dart';
+import 'EditScreenKaryawan.dart';
 
-class ItemListKategori extends StatelessWidget {
+class ItemListKaryawan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -18,8 +18,9 @@ class ItemListKategori extends StatelessWidget {
             itemBuilder: (context, index) {
               var noteInfo = snapshot.data.docs[index].data();
               String docID = snapshot.data.docs[index].id;
-              String golongan = noteInfo['golongan'];
-              double gaji = noteInfo['gaji'];
+              String nama = noteInfo['nama'];
+              String alamat = noteInfo['alamat'];
+              double noHp = noteInfo['noHp'];
 
               return Card(
                   child: Container(
@@ -33,28 +34,29 @@ class ItemListKategori extends StatelessWidget {
                 // decoration: BoxDecoration(
                 //   // color: CustomColors.firebaseGrey.withOpacity(0.1),
                 //   borderRadius: BorderRadius.circular(8.0),
-
+                // ),
                 child: ListTile(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   onTap: () => Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => EditScreenKategori(
-                        currentGolongan: golongan,
-                        currentGaji: gaji,
+                      builder: (context) => EditScreenKaryawan(
+                        currentNama: nama,
+                        currentAlamat: alamat,
+                        currentnoHp: noHp,
                         documentId: docID,
                       ),
                     ),
                   ),
                   title: Text(
-                    "Golongan : " + golongan,
+                    "Nama : " + nama,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text(
-                    "Gaji : Rp. $gaji",
-                    maxLines: 1,
+                    "Alamat : " + alamat + "\nNo Hp : " + "$noHp",
+                    maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

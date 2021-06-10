@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = _firestore.collection('Penggajian');
+final CollectionReference _mainCollection = _firestore.collection('Pegawai');
 
 class Database {
   static String userUid;
 
-  static Future<void> addItem({
+  static Future<void> addItemKaryawan({
     String nama,
     String alamat,
     double noHp,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid).collection('Karyawan').doc();
+        _mainCollection.doc(userUid);
 
     Map<String, dynamic> data = <String, dynamic>{
       "nama": nama,
@@ -33,7 +33,7 @@ class Database {
     String docId,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid).collection('Karyawan').doc(docId);
+        _mainCollection.doc(docId);
 
     Map<String, dynamic> data = <String, dynamic>{
       "nama": nama,
@@ -49,7 +49,7 @@ class Database {
 
   static Stream<QuerySnapshot> readItems() {
     CollectionReference notesItemCollection =
-        _mainCollection.doc(userUid).collection('Karyawan');
+        _mainCollection;
 
     return notesItemCollection.snapshots();
   }
@@ -58,7 +58,7 @@ class Database {
     String docId,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(userUid).collection('Karyawan').doc(docId);
+        _mainCollection.doc(docId);
 
     await documentReferencer
         .delete()

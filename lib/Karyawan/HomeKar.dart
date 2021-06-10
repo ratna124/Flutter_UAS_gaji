@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'ItemList.dart';
-import 'AddScreen.dart';
+import 'ItemKaryawan.dart';
+import 'AddKaryawan.dart';
 
 //pendukung program asinkron
-class HomeKat extends StatefulWidget {
+class HomeKar extends StatefulWidget {
   @override
-  HomeKatState createState() => HomeKatState();
+  HomeKarState createState() => HomeKarState();
 }
 
-class HomeKatState extends State<HomeKat> {
+class HomeKarState extends State<HomeKar> {
   @override
-  CollectionReference _kategori =
-      FirebaseFirestore.instance.collection('Penggajian');
+  CollectionReference _karyawan =
+      FirebaseFirestore.instance.collection('Pegawai');
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: CustomColors.firebaseNavy,
@@ -25,7 +25,7 @@ class HomeKatState extends State<HomeKat> {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => AddScreen(),
+              builder: (context) => AddKaryawan(),
             ),
           );
         },
@@ -50,7 +50,7 @@ class HomeKatState extends State<HomeKat> {
             right: 16.0,
             bottom: 20.0,
           ),
-          child: ItemListKategori(),
+          child: ItemListKaryawan(),
         ),
       )
     );
