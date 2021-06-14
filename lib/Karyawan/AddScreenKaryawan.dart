@@ -6,6 +6,7 @@ class AddScreenKaryawan extends StatelessWidget {
   final FocusNode _namaFocusNode = FocusNode();
   final FocusNode _alamatFocusNode = FocusNode();
   final FocusNode _noHpFocusNode = FocusNode();
+  final FocusNode _kategoriFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,8 @@ class AddScreenKaryawan extends StatelessWidget {
         _namaFocusNode.unfocus();
         _alamatFocusNode.unfocus();
         _noHpFocusNode.unfocus();
+        _noHpFocusNode.unfocus();
+        _kategoriFocusNode.unfocus();
       },
       child: Scaffold(
         // backgroundColor: CustomColors.firebaseNavy,
@@ -42,6 +45,7 @@ class AddScreenKaryawan extends StatelessWidget {
               namaFocusNode: _namaFocusNode,
               alamatFocusNode: _alamatFocusNode,
               noHpFocusNode: _noHpFocusNode,
+              kategoriFocusNode: _kategoriFocusNode,
             ),
           ),
         ),

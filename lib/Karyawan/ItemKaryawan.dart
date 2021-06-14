@@ -7,7 +7,7 @@ class ItemListKaryawan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Database.readItems(),
+      stream: DatabaseKaryawan.readItems(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
@@ -21,6 +21,7 @@ class ItemListKaryawan extends StatelessWidget {
               String nama = noteInfo['nama'];
               String alamat = noteInfo['alamat'];
               double noHp = noteInfo['noHp'];
+              String kategori = noteInfo['kategori'];
 
               return Card(
                   child: Container(
@@ -45,6 +46,7 @@ class ItemListKaryawan extends StatelessWidget {
                         currentNama: nama,
                         currentAlamat: alamat,
                         currentnoHp: noHp,
+                        currentKategori: kategori,
                         documentId: docID,
                       ),
                     ),
@@ -55,8 +57,8 @@ class ItemListKaryawan extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   subtitle: Text(
-                    "Alamat : " + alamat + "\nNo Hp : " + "$noHp",
-                    maxLines: 2,
+                    "Alamat : " + alamat + "\nNo Hp : " + "$noHp"+ "\nKategori : " + "$kategori",
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),

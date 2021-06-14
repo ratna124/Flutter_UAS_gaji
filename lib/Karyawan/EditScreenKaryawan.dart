@@ -6,12 +6,14 @@ class EditScreenKaryawan extends StatefulWidget {
   final String currentNama;
   final String currentAlamat;
   final double currentnoHp;
+  final String currentKategori;
   final String documentId;
 
   EditScreenKaryawan({
     this.currentNama,
     this.currentAlamat,
     this.currentnoHp,
+    this.currentKategori,
     this.documentId,
   });
 
@@ -23,6 +25,7 @@ class _EditScreenKaryawanState extends State<EditScreenKaryawan> {
   final FocusNode _namaFocusNode = FocusNode();
   final FocusNode _alamatFocusNode = FocusNode();
   final FocusNode _noHpFocusNode = FocusNode();
+  final FocusNode _kategoriFocusNode = FocusNode();
 
   bool _isDeleting = false;
 
@@ -33,6 +36,7 @@ class _EditScreenKaryawanState extends State<EditScreenKaryawan> {
         _namaFocusNode.unfocus();
         _alamatFocusNode.unfocus();
         _noHpFocusNode.unfocus();
+        _kategoriFocusNode.unfocus();
       },
       child: Scaffold(
         // backgroundColor: CustomColors.firebaseNavy,
@@ -67,7 +71,7 @@ class _EditScreenKaryawanState extends State<EditScreenKaryawan> {
                         _isDeleting = true;
                       });
 
-                      await Database.deleteItem(
+                      await DatabaseKaryawan.deleteItem(
                         docId: widget.documentId,
                       );
 
@@ -93,9 +97,11 @@ class _EditScreenKaryawanState extends State<EditScreenKaryawan> {
               namaFocusNode: _namaFocusNode,
               alamatFocusNode: _alamatFocusNode,
               noHpFocusNode: _noHpFocusNode,
+              kategoriFocusNode: _kategoriFocusNode,
               currentNama: widget.currentNama,
               currentAlamat: widget.currentAlamat,
               currentnoHp: widget.currentnoHp,
+              currentKategori: widget.currentKategori,
             ),
           ),
         ),

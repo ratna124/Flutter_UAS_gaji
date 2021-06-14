@@ -86,7 +86,7 @@ class _AddKategoriState extends State<AddKategori> {
                           _isProcessing = true;
                         });
 
-                        await Database.addItem(
+                        await DatabaseKategori.addItem(
                             golongan: _golonganController.text,
                             gaji: double.tryParse(_gajiController.text));
 

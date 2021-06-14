@@ -117,7 +117,7 @@ class _EditItemFormState extends State<EditItemForm> {
                           _isProcessing = true;
                         });
 
-                        await Database.updateItem(
+                        await DatabaseKategori.updateItem(
                           docId: widget.documentId,
                           golongan: _golonganController.text,
                           gaji: double.parse(_gajiController.text),

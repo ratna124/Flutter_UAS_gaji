@@ -3,13 +3,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final CollectionReference _mainCollection = _firestore.collection('Pegawai');
 
-class Database {
+class DatabaseKaryawan {
   static String userUid;
 
   static Future<void> addItemKaryawan({
     String nama,
     String alamat,
     double noHp,
+    String kategori,
   }) async {
     DocumentReference documentReferencer =
         _mainCollection.doc(userUid);
@@ -18,6 +19,7 @@ class Database {
       "nama": nama,
       "alamat": alamat,
       "noHp": noHp,
+      "kategori": kategori,
     };
 
     await documentReferencer
@@ -30,6 +32,7 @@ class Database {
     String nama,
     String alamat,
     double noHp,
+    String kategori,
     String docId,
   }) async {
     DocumentReference documentReferencer =
@@ -39,6 +42,7 @@ class Database {
       "nama": nama,
       "alamat": alamat,
       "noHp": noHp,
+      "kategori" : kategori,
     };
 
     await documentReferencer

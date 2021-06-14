@@ -23,7 +23,6 @@ class HomeState extends State<HomeKaryawan> {
               colors: [Colors.blue[100], Colors.blueGrey[100]],
             ),
           ),
-          
           child: ListView(
                 children: [
                 StreamBuilder<QuerySnapshot>(
@@ -49,6 +48,7 @@ class HomeState extends State<HomeKaryawan> {
                       );
                     },
                   ),
+        
              Padding(
               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
               child: Row(children: <Widget>[
